@@ -15,7 +15,6 @@ const createTask = async (req,res)=>{
     } catch(error){
         res.status(500).json({msg:error})
     }
-    
 }
 const getTask = async (req,res)=>{
     try{
@@ -27,7 +26,7 @@ const getTask = async (req,res)=>{
         }
         res.status(200).json({task})
     }catch(error){ //if no value/syntax error
-        res.status(500).json({msg:"wat the hell",error})
+        res.status(500).json({msg:error})
     }
 }
 
@@ -43,8 +42,8 @@ const updateTask =async(req,res)=>{
         }
         res.status(200).json({task})
 
-    }catch(error){
-        res.status(500).json({msg:"wat the hell",error})
+        }catch(error){
+        res.status(500).json({msg:error})
     }
 }
 
@@ -59,7 +58,6 @@ const deleteTask = async (req,res)=>{
     }catch(error){
         res.status(404).json({msg:error})
     }
-
 }
 
 module.exports={
