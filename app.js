@@ -14,7 +14,7 @@ app.use(express.json())
 // })
 app.use('/api/v1/tasks',tasks)              //using middleware (path,callback :middleware function)
 
-const port = 5000
+const port = `https://main--precious-jalebi-fbf1c7.netlify.app/`
 
 const start = async () =>{
     try{

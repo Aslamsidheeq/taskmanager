@@ -35,7 +35,8 @@ const updateTask =async(req,res)=>{
         const {id:taskID} = req.params;
         const task = await Task.findByIdAndUpdate({_id:taskID},req.body,{
             new:true,
-            runValidators:true
+            runValidators:true,
+            overwrite:true
         })
         if(!task){
             return res.satus(404).json({msg: `No task found with the id : ${taskID}` })
