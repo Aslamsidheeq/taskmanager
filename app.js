@@ -9,11 +9,11 @@ app.use(express.json())
 
 //routes
 // app.get('/hello',(req,res)=>{
-//     res.send('Task Manager App')
-// })
+//     res.send('Task Manager App')})
+
 app.use('/api/v1/tasks',tasks)              //using middleware (path,callback :middleware function)
 
-const port = process.env.PORT || 3000
+const port = 5000
 
 const start = async () =>{
     try{
