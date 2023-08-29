@@ -3,7 +3,6 @@ const app = express();                      //initialising
 const tasks = require('./routes/tasks')
 const connectDB = require('./db/connect')
 require('dotenv').config()
-
 //middleware
 app.use(express.static('./public'))
 app.use(express.json())
@@ -14,7 +13,7 @@ app.use(express.json())
 // })
 app.use('/api/v1/tasks',tasks)              //using middleware (path,callback :middleware function)
 
-const port = `https://main--precious-jalebi-fbf1c7.netlify.app/`
+const port = process.env.PORT || 3000
 
 const start = async () =>{
     try{
