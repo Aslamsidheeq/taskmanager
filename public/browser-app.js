@@ -11,29 +11,36 @@ const showTasks = async () => {
   try {
     const {
       data:  {task:tasks} ,
-    } = await axios.get('/api/v1/tasks')
+    } = await axios.get('/api/v1/tasks') //returns object with data as property
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
       loadingDOM.style.visibility = 'hidden'
       return
     }
+    console.log(tasks) // array
     const allTasks = tasks
       .map((task) => {
         const { completed, _id: taskID, name } = task
-        return `<div class="single-task ${completed && 'task-completed'}">
-<h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
-<div class="task-links">
+        return `
+        <div class="single-task ${completed && 'task-completed'}">
+        <h5>
+        <span><i class="far fa-check-circle"></i></span>
+        ${name}
+        </h5>
 
-<!-- edit link -->
-<a href="task.html?id=${taskID}"  class="edit-link">
-<i class="fas fa-edit"></i>
-</a>
-<!-- delete btn -->
-<button type="button" class="delete-btn" data-id="${taskID}">
-<i class="fas fa-trash"></i>
-</button>
-</div>
-</div>`
+        <div class="task-links">
+
+        <!-- edit link -->
+        <a href="task.html?id=${taskID}"  class="edit-link">
+        <i class="fas fa-edit"></i>
+        </a>
+
+        <!-- delete btn -->
+        <button type="button" class="delete-btn" data-id="${taskID}">
+        <i class="fas fa-trash"></i>
+        </button>
+        </div>
+        </div>`
       })
       .join('')
     tasksDOM.innerHTML = allTasks
@@ -48,8 +55,10 @@ showTasks()
 
 // delete task /api/tasks/:id
 
-tasksDOM.addEventListener('click', async (e) => {
+tasksDOM.addEventListener('click', async (e) => {     //tasks class
   const el = e.target
+  //console.log(el)
+  //console.log("parent",el.parentElement)
   if (el.parentElement.classList.contains('delete-btn')) {
     loadingDOM.style.visibility = 'visible'
     const id = el.parentElement.dataset.id
@@ -70,7 +79,7 @@ formDOM.addEventListener('submit', async (e) => {
   const name = taskInputDOM.value
 
   try {
-    await axios.post('/api/v1/tasks', { name })
+    await axios.post('/api/v1/tasks', { name }) // name as payload
     showTasks()
     taskInputDOM.value = ''
     formAlertDOM.style.display = 'block'
