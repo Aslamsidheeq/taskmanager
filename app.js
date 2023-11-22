@@ -6,13 +6,18 @@ require('dotenv').config()
 //middleware
 app.use(express.static('./public')) //integrating frontend
 app.use(express.json())
+const cors = required('cors')
 
 // routes
 // app.get('/hello',(req,res)=>{
 //     res.send('Task Manager App')})
 
-app.use('taskmanager-mern-bay.vercel.app',tasks)              //using middleware (path,callback :middleware function)
-
+app.use('/',tasks)              //using middleware (path,callback :middleware function)
+app.use(cors({
+    origin:["https://taskmanager-mern-bay.vercel.app"],
+    methods:["POST","GET"],
+    credentials:true
+}))
 const port = 5000
 
 const start = async () =>{
