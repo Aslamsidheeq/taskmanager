@@ -11,7 +11,7 @@ app.use(express.json())
 // app.get('/hello',(req,res)=>{
 //     res.send('Task Manager App')})
 
-app.use('/api/v1/tasks',tasks)              //using middleware (path,callback :middleware function)
+app.use('taskmanager-mern-bay.vercel.app/api/v1/tasks',tasks)              //using middleware (path,callback :middleware function)
 
 const port = 5000
 
