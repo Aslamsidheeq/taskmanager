@@ -20,12 +20,12 @@ const getTask = async (req,res)=>{
     try{
         const {id:taskID} = req.params;
         const task = await Task.findOne({_id:taskID})
-        //if id didnt match:
+            //if id didnt match:
         if(!task){
             return res.satus(404).json({msg: `No task found with the id : ${taskID}` })
         }
         res.status(200).json({task})
-    }catch(error){ //if no value/syntax error
+    }catch(error){      //if no value/syntax error
         res.status(500).json({msg:error})
     }
 }

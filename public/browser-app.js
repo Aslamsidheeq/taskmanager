@@ -10,8 +10,8 @@ const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
   try {
     const {
-      data:  {task:tasks} ,
-    } = await axios.get('/api/v1/tasks') //returns object with data as property
+      data:  {task:tasks} , //obj with prop name,_id,completed
+    } = await axios.get('/api/v1/tasks') //GET req to endpoint using axios library - returns object with data as property
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
       loadingDOM.style.visibility = 'hidden'
@@ -21,7 +21,8 @@ const showTasks = async () => {
     const allTasks = tasks
       .map((task) => {
         const { completed, _id: taskID, name } = task
-        return `
+        //"task completed" if completed is true
+        return`
         <div class="single-task ${completed && 'task-completed'}">
         <h5>
         <span><i class="far fa-check-circle"></i></span>
@@ -41,6 +42,7 @@ const showTasks = async () => {
         </button>
         </div>
         </div>`
+        //string interpolation - without template literals, combine expr with str by + operator 
       })
       .join('')
     tasksDOM.innerHTML = allTasks
@@ -79,7 +81,7 @@ formDOM.addEventListener('submit', async (e) => {
   const name = taskInputDOM.value
 
   try {
-    await axios.post('/api/v1/tasks', { name }) // name as payload
+    await axios.post('/api/v1/tasks', { name })     // name as payload
     showTasks()
     taskInputDOM.value = ''
     formAlertDOM.style.display = 'block'

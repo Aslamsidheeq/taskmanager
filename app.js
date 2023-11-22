@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();                      //initialising
-const tasks = require('./routes/tasks')
+const tasks = require('./routes/tasks').default
 const connectDB = require('./db/connect')
 require('dotenv').config()
 //middleware
-app.use(express.static('./public'))
+app.use(express.static('./public')) //integrating frontend
 app.use(express.json())
 
-//routes
+// routes
 // app.get('/hello',(req,res)=>{
 //     res.send('Task Manager App')})
 

@@ -2,13 +2,13 @@
 *,
 ::after,
 ::before {
-  box-sizing: border-box;
+  box-sizing: border-box;   /*padding and border of each element are included in its total width and height*/
 }
-:root {
+:root {        /*   GLOBAL CSS VARIABLES    */
   /* COLORS  */
   /* primary */
   --primary-0: #f0efff;
-  --primary-50: #d8d6ff;
+  --primary-50: #d8d6ff;      /*  usage eg:   color: var(--primary-500);     */
   --primary-100: #c1beff;
   --primary-200: #aaa5ff;
   --primary-300: #938dff;
@@ -23,7 +23,7 @@
   --primary-1100: #0a0919;
   /* grey */
   --grey-0: #fafbfc;
-  --grey-50: #f2f4f8;
+  --grey-50: #f2f4f8;       /*    usage eg:    background: var(--grey-50); */
   --grey-100: #eaedf3;
   --grey-200: #e2e7ef;
   --grey-300: #dbe0ea;
@@ -38,14 +38,14 @@
 
   /* rest */
   --black: #222;
-  --white: #fff;
+  --white: #fff;        /* usage eg:    color:var(--white);    */
   --red-light: #f8d7da;
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
 
   /* typography */
-  --headingFont: 'Inconsolata', monospace;
+  --headingFont: 'Inconsolata', monospace;    /*  usage eg:   font-family: var(--headingFont);  */
   --bodyFont: 'Montserrat', sans-serif;
   --smallText: 0.7em;
   /* rest */
@@ -63,7 +63,7 @@
   --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);       /*  usage eg:     box-shadow: var(--shadow-1);   */
 }
 
 html {
