@@ -12,7 +12,7 @@ const cors = required('cors')
 // app.get('/hello',(req,res)=>{
 //     res.send('Task Manager App')})
 
-app.use('/',tasks)              //using middleware (path,callback :middleware function)
+app.use('taskmanager-mern-bay.vercel.app',tasks)              //using middleware (path,callback :middleware function)
 app.use(cors({
     origin:["https://taskmanager-mern-bay.vercel.app"],
     methods:["POST","GET"],
